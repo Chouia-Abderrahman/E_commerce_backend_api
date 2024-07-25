@@ -12,7 +12,7 @@ jobs:
         ports:
           - 5432:5432
         env:
-          POSTGRES_DB: django_db
+          POSTGRES_DB: django_db_Ecommerce
           POSTGRES_USER: django
           POSTGRES_PASSWORD: django
         options: >-
@@ -49,7 +49,7 @@ jobs:
           python manage.py migrate
       - name: Run tests
         env:
-          DJANGO_DB_NAME: django_db
+          DJANGO_DB_NAME: django_db_Ecommerce
           DJANGO_DB_USER: django
           DJANGO_DB_PASSWORD: django
           DJANGO_DB_HOST: localhost
