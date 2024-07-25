@@ -46,7 +46,7 @@ jobs:
       - name: Run migrations
         run: |
           cd Django_api
-          python manage.py makemigrations
+          python manage.py makemigrations backend
           python manage.py migrate
       - name: Run tests
         env:
