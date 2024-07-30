@@ -1,0 +1,32 @@
+POST http://localhost:3000/api/player/
+Content-Type: application/json
+
+{
+    "name": "new guy",
+    "position": "midfielder",
+    "playerSkills": [
+        {
+            "skill": "strength",
+            "value": 40
+        }
+    ]
+}
+###################
+
+PUT http://localhost:3000/api/player/14/
+Content-Type: application/json
+
+{
+    "name": "new working guy",
+    "position": "forward",
+    "playerSkills": [
+        {
+            "skill": "strength",
+            "value": 608
+        }
+    ]
+}
+
+#########################
+DELETE http://localhost:3000/api/player/17/
+Authorization: Bearer SkFabTZibXE1aE14ckpQUUxHc2dnQ2RzdlFRTTM2NFE2cGI4d3RQNjZmdEFITmdBQkE= 

@@ -1,5 +1,5 @@
 .idea
 
 Django_api/venv
-Django_api/backend/migrations
+migrations/
 __pycache__/
