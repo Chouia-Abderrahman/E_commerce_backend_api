@@ -23,19 +23,6 @@ def create_get_player(request):
         serializer = PlayerSerializer(players, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-# @api_view(['PUT'])
-# def update_player(request, player_id):
-#     try:
-#         player = Player.objects.get(pk=player_id)
-#     except Player.DoesNotExist:
-#         return Response({"message": f"Player with id {player_id} does not exist"}, status=status.HTTP_404_NOT_FOUND)
-#
-#     serializer = PlayerSerializer(player, data=request.data)
-#     if serializer.is_valid():
-#         updated_player = serializer.save()
-#         return Response(PlayerSerializer(updated_player).data)
-#     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
 class HasValidToken(BasePermission):
     def has_permission(self, request, view):
         auth_header = request.META.get('HTTP_AUTHORIZATION', '')
@@ -44,12 +31,6 @@ class HasValidToken(BasePermission):
             return token == 'SkFabTZibXE1aE14ckpQUUxHc2dnQ2RzdlFRTTM2NFE2cGI4d3RQNjZmdEFITmdBQkE='
         return False
 
-# @api_view(['DELETE'])
-# @permission_classes([HasValidToken])
-# def delete_player(request, player_id):
-#     player = get_object_or_404(Player, id=player_id)
-#     player.delete()
-#     return Response(status=status.HTTP_204_NO_CONTENT)
 
 @api_view(['PUT', 'DELETE','GET'])
 def get_modify_delete_player(request, player_id):
