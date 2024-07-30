@@ -110,3 +110,11 @@ class PlayerSerializer(serializers.ModelSerializer):
                             error_dict["message"] = str(skill_error)
                         break
             raise serializers.ValidationError(error_dict)
+
+    def get_playerSkills(self, obj):
+        main_skill = self.context.get('main_skill')
+        if main_skill:
+            skills = obj.skills.filter(skill_name=main_skill)
+        else:
+            skills = obj.skills.all().order_by('-skill_level')[:1]
+        return PlayerSkillSerializer(skills, many=True).data

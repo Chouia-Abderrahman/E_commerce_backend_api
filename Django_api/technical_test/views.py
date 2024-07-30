@@ -6,6 +6,7 @@ from .models import Player, PlayerSkill
 from .serializers import PlayerSerializer
 from rest_framework.permissions import BasePermission
 from django.shortcuts import get_object_or_404
+from django.db.models import Max, F
 
 # Create your views here.
 
@@ -57,3 +58,43 @@ def get_modify_delete_player(request, player_id):
 
         player.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+@api_view(['POST'])
+def process_team(request):
+    requirements = request.data
+    selected_players = []
+    used_player_ids = set()
+
+    for req in requirements:
+        position = req['position']
+        main_skill = req['mainSkill']
+        number_of_players = req['numberOfPlayers']
+
+        # Check if there are enough players for this position
+        available_players = Player.objects.filter(position=position).exclude(id__in=used_player_ids)
+        if available_players.count() < number_of_players:
+            return Response({
+                "message": f"Insufficient number of players for position: {position}"
+            }, status=status.HTTP_400_BAD_REQUEST)
+
+        # Find players with the main skill
+        players_with_skill = available_players.filter(skills__skill=main_skill)
+
+        if players_with_skill.exists():
+            # If players with the main skill exist, select the best ones
+            best_players = players_with_skill.annotate(
+                skill_value=F('skills__skill_level')).order_by('-skill_value')[:number_of_players]
+        else:
+            # If no players with the main skill, select based on highest skill
+            best_players = available_players.annotate(
+                max_skill=Max('skills__skill_level')
+            ).order_by('-max_skill')[:number_of_players]
+
+        for player in best_players:
+            selected_players.append(player)
+            used_player_ids.add(player.id)
+
+    # Serialize the selected players
+    serializer = PlayerSerializer(selected_players, many=True, context={'main_skill': req['mainSkill']})
+    return Response(serializer.data)

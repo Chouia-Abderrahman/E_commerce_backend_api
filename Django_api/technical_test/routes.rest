@@ -38,3 +38,15 @@ Content-Type: application/json
 #########################
 DELETE http://localhost:3000/api/player/17/
 Authorization: Bearer SkFabTZibXE1aE14ckpQUUxHc2dnQ2RzdlFRTTM2NFE2cGI4d3RQNjZmdEFITmdBQkE= 
+
+###########################################
+POST http://localhost:3000/api/team/process/
+Content-Type: application/json
+
+[
+     {
+        "position": "midfielder",
+        "mainSkill": "speed",
+        "numberOfPlayers": 2
+     }
+ ]    
