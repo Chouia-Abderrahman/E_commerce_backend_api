@@ -52,7 +52,10 @@ class PlayerSerializer(serializers.ModelSerializer):
     def validate_playerSkills(self, value):
         if len(value) < 1:
             raise serializers.ValidationError("Player must have at least one skill")
-        return value
+
+        skill_names = [skill['skill'] for skill in value]
+        if len(skill_names) != len(set(skill_names)):
+            raise serializers.ValidationError("Player cannot have duplicate skills")
 
     def create(self, validated_data):
         skills_data = validated_data.pop('skills')
@@ -100,8 +103,10 @@ class PlayerSerializer(serializers.ModelSerializer):
                         if isinstance(skill_error, dict):
                             # If it's a dict, get the first error message
                             error_dict["message"] = str(next(iter(skill_error.values()))[0][0])
+                        elif isinstance(skill_error, list):
+                            error_dict["message"] = skill_error[0]
                         else:
                             # If it's not a dict, it's probably already a string
-                            error_dict["message"] = str(skill_error[0])
+                            error_dict["message"] = str(skill_error)
                         break
             raise serializers.ValidationError(error_dict)
