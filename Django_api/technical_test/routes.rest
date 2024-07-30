@@ -2,12 +2,20 @@ POST http://localhost:3000/api/player/
 Content-Type: application/json
 
 {
-    "name": "new guy",
+    "name": "brutha duplicate skills",
     "position": "midfielder",
     "playerSkills": [
         {
-            "skill": "strength",
-            "value": 40
+            "skill": "defense",
+            "value": 200
+        },
+        {
+            "skill": "defense",
+            "value": 20
+        },
+        {
+            "skill": "speed",
+            "value": 20
         }
     ]
 }
@@ -17,7 +25,7 @@ PUT http://localhost:3000/api/player/14/
 Content-Type: application/json
 
 {
-    "name": "new working guy",
+    "name": "Aymen 2",
     "position": "forward",
     "playerSkills": [
         {

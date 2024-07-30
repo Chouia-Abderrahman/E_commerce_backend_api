@@ -22,7 +22,7 @@ class PlayerSkill(models.Model):
         ('strength', 'Strength'),
         ('stamina', 'Stamina'),
     ]
-    skill_name = models.CharField(max_length=100)
+    skill = models.CharField(max_length=100)
     skill_level = models.IntegerField()
     player = models.ForeignKey(Player, on_delete=models.CASCADE, related_name='skills')
 

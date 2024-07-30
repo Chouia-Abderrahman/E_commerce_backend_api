@@ -9,13 +9,19 @@ from django.shortcuts import get_object_or_404
 
 # Create your views here.
 
-@api_view(['POST'])
-def create_player(request):
-    serializer = PlayerSerializer(data=request.data)
-    if serializer.is_valid():
-        serializer.save()
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+@api_view(['POST', 'GET'])
+def create_get_player(request):
+    if request.method == 'POST':
+        serializer = PlayerSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    elif request.method == 'GET':
+        players = Player.objects.all()
+        serializer = PlayerSerializer(players, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 # @api_view(['PUT'])
 # def update_player(request, player_id):
@@ -45,12 +51,16 @@ class HasValidToken(BasePermission):
 #     player.delete()
 #     return Response(status=status.HTTP_204_NO_CONTENT)
 
-@api_view(['PUT', 'DELETE'])
-def modify_player(request, player_id):
+@api_view(['PUT', 'DELETE','GET'])
+def get_modify_delete_player(request, player_id):
     try:
         player = Player.objects.get(pk=player_id)
     except Player.DoesNotExist:
         return Response({"message": f"Player with id {player_id} does not exist"}, status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serializer = PlayerSerializer(player)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     if request.method == 'PUT':
         serializer = PlayerSerializer(player, data=request.data)

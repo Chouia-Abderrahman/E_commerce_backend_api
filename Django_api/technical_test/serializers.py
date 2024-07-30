@@ -12,6 +12,12 @@ class PlayerSkillSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(f"Invalid value for skill: {value}")
         return value
 
+    def validate_skill(self, value):
+        valid_skills = dict(PlayerSkill.skill_choices).keys()
+        if value not in valid_skills:
+            raise serializers.ValidationError(f"Invalid value for skill: {value}")
+        return value
+
     def to_internal_value(self, data):
         try:
             return super().to_internal_value(data)
@@ -88,5 +94,14 @@ class PlayerSerializer(serializers.ModelSerializer):
             if 'position' in e.detail:
                 error_dict["message"] = e.detail['position'][0]
             elif 'playerSkills' in e.detail:
-                error_dict["message"] = e.detail['playerSkills'][0]
+                playerSkills_errors = e.detail['playerSkills']
+                for skill_error in playerSkills_errors:
+                    if skill_error:  # Check if the error is not empty
+                        if isinstance(skill_error, dict):
+                            # If it's a dict, get the first error message
+                            error_dict["message"] = str(next(iter(skill_error.values()))[0][0])
+                        else:
+                            # If it's not a dict, it's probably already a string
+                            error_dict["message"] = str(skill_error[0])
+                        break
             raise serializers.ValidationError(error_dict)
