@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'backend',
     'technical_test',
+    'my_app',
 ]
 
 REST_FRAMEWORK = {
