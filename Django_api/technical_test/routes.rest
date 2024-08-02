@@ -1,8 +1,8 @@
-POST http://localhost:3000/api/player/
+POST http://localhost:3000/api/player
 Content-Type: application/json
 
 {
-    "name": "brutha duplicate skills",
+    "name": "test",
     "position": "midfielder",
     "playerSkills": [
         {
@@ -10,18 +10,18 @@ Content-Type: application/json
             "value": 200
         },
         {
-            "skill": "defense",
+            "skill": "attack",
             "value": 20
         },
         {
             "skill": "speed",
-            "value": 20
+            "value": 20000
         }
     ]
 }
 ###################
 
-PUT http://localhost:3000/api/player/14/
+PUT http://localhost:3000/api/player/1
 Content-Type: application/json
 
 {
@@ -36,17 +36,22 @@ Content-Type: application/json
 }
 
 #########################
-DELETE http://localhost:3000/api/player/17/
+DELETE http://localhost:3000/api/player/3
 Authorization: Bearer SkFabTZibXE1aE14ckpQUUxHc2dnQ2RzdlFRTTM2NFE2cGI4d3RQNjZmdEFITmdBQkE= 
 
 ###########################################
-POST http://localhost:3000/api/team/process/
+POST http://localhost:3000/api/team/process
 Content-Type: application/json
 
 [
      {
+        "position": "defender",
+        "mainSkill": "speed",
+        "numberOfPlayers": 1
+     },
+     {
         "position": "midfielder",
         "mainSkill": "speed",
-        "numberOfPlayers": 2
+        "numberOfPlayers": 1
      }
  ]    
