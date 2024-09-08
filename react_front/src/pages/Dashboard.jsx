@@ -1,11 +1,11 @@
 // src/pages/Dashboard.jsx
-import { Box, SimpleGrid, Stat, StatLabel, StatNumber } from "@chakra-ui/react";
-import RecentOrders from "../components/Dashboard/RecentOrders";
+import { Box } from "@chakra-ui/react";
 import OverviewStats from "../components/Dashboard/OverviewStats";
+import RecentOrders from "../components/Dashboard/RecentOrders";
 
 function Dashboard() {
   return (
-    <Box p={6} mt="64px">
+    <Box p={6} mt="64px"> {/* Ensure proper padding */}
       <OverviewStats />
       <RecentOrders />
     </Box>

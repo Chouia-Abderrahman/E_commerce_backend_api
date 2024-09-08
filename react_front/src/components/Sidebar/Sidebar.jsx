@@ -1,21 +1,28 @@
 // src/components/Sidebar/Sidebar.jsx
-import { Box, VStack } from "@chakra-ui/react";
+import { Box, VStack, Flex } from "@chakra-ui/react";
 import MenuItems from "./MenuItems";
 
 function Sidebar() {
   return (
+    <Flex
+    align="start"
+    zIndex={99}
+    
+    >
     <Box
-      w="250px"
       bg="white"
       boxShadow="md"
       position="fixed"
       height="100vh"
-      p={4}
+      padding={4}
+      width={200}
+      
     >
-      <VStack align="start" spacing={4}>
+      <div>
         <MenuItems />
-      </VStack>
+      </div>
     </Box>
+    </Flex>
   );
 }
 

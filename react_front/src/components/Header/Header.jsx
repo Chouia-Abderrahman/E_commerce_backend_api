@@ -5,9 +5,9 @@ import { FaBell, FaCog, FaSearch } from "react-icons/fa";
 function Header() {
   return (
     <Flex p={4} align="center" boxShadow="md" bg="white">
-      <Box>
+      {/* <Box>
         <Input placeholder="Search..." w="400px" />
-      </Box>
+      </Box> */}
       <Spacer />
       <IconButton icon={<FaSearch />} variant="ghost" aria-label="Search" />
       <IconButton icon={<FaBell />} variant="ghost" aria-label="Notifications" />

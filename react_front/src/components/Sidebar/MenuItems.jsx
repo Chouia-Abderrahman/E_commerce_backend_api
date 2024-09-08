@@ -1,6 +1,12 @@
 // src/components/Sidebar/MenuItems.jsx
-import { VStack, Icon, Text } from "@chakra-ui/react";
-import { FaChartPie, FaShoppingCart, FaTags, FaUser, FaLayerGroup } from "react-icons/fa";
+import { VStack, Icon, Text, Flex, Box } from "@chakra-ui/react";
+import {
+  FaChartPie,
+  FaShoppingCart,
+  FaTags,
+  FaUser,
+  FaLayerGroup,
+} from "react-icons/fa";
 
 function MenuItems() {
   const menuItems = [
@@ -12,14 +18,18 @@ function MenuItems() {
   ];
 
   return (
-    <VStack align="start" spacing={4}>
+    <div>
       {menuItems.map((item, index) => (
-        <VStack key={index} align="start" spacing={1}>
-          <Icon as={item.icon} boxSize={5} color="gray.600" />
-          <Text>{item.name}</Text>
-        </VStack>
+        <Flex key={index} gap="4" align={"start"} marginBottom={3}>
+          <Box>
+            <Icon as={item.icon} boxSize={5} color="gray.600" />
+          </Box>
+          <Box>
+            <Text>{item.name}</Text>
+          </Box>
+        </Flex>
       ))}
-    </VStack>
+    </div>
   );
 }
 
