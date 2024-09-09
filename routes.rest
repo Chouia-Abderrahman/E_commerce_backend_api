@@ -18,3 +18,27 @@ Content-Type: application/json
 {
   "name": "Clothes"
 }
+#####################
+POST http://localhost:8000/signup/
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "email": "testuser@example.com",
+  "password": "testpassword"
+}
+#####################
+POST http://localhost:8000/login/
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "password": "testpassword"
+}
+#####################
+POST http://localhost:8000/token/refresh/
+Content-Type: application/json
+
+{
+  "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcyNTk4MTg3MiwiaWF0IjoxNzI1ODk1NDcyLCJqdGkiOiIwODllZGY0NWM3Yjg0ODNmYmVhYjdhNzY5NzE5ZjlhOCIsInVzZXJfaWQiOjF9.jCDkhmeOzbBqa5VrsyiUnQ1xSFEHqOOz1czkUOU_cik"
+}
