@@ -1,9 +1,34 @@
 # E-commerce Backend API
 
 ## User Management
-- **POST /users**: Register a new user
+- **POST /register**: Register a new user, with a request like this
+    ````
+    {
+      "username": "testuser",
+      "email": "testuser@example.com",
+      "password": "testpassword"
+    }
+    ````
 - **POST /login**: User login
-- **GET /users/{id}**: Retrieve user profile
+    ````
+    {
+      "username": "testuser",
+      "password": "testpassword"
+    }
+    ````
+  and returns the access token and a refresh token to refresh the access token when it expires
+    ````
+    {
+      "refresh": "<refresh_token>",
+      "access": "<access_token>"
+    }
+  ````
+- **POST token/refresh/**: Refresh access token when it expires
+    ````
+    {
+      "refresh": "<refresh_token>"
+    }
+    ````
 - **PUT /users/{id}**: Update user profile
 - **DELETE /users/{id}**: Delete user account
 
