@@ -2,22 +2,25 @@ POST http://localhost:8000/categories/
 Content-Type: application/json
 
 {
-  "name": "mmmmmmmmmmmmmmmmmmmmmmmm"
+  "name": "Clothes"
 }
 #####
 GET http://localhost:8000/categories/
 
 ##############
 
-GET http://localhost:8000/categories/4
+GET http://localhost:8000/categories/4/
 
 ############
-PUT http://localhost:8000/categories/4
+PUT http://localhost:8000/categories/3/
 Content-Type: application/json
 
 {
-  "name": "Clothes"
+  "name": "Electronics"
 }
+#####################
+DELETE http://localhost:8000/categories/6/
+
 #####################
 POST http://localhost:8000/signup/
 Content-Type: application/json
@@ -42,3 +45,37 @@ Content-Type: application/json
 {
   "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcyNTk4MTg3MiwiaWF0IjoxNzI1ODk1NDcyLCJqdGkiOiIwODllZGY0NWM3Yjg0ODNmYmVhYjdhNzY5NzE5ZjlhOCIsInVzZXJfaWQiOjF9.jCDkhmeOzbBqa5VrsyiUnQ1xSFEHqOOz1czkUOU_cik"
 }
+####################
+POST http://localhost:8000/products/
+Content-Type: application/json
+
+{
+  "name": "T-shirt",
+  "description": "A comfortable cotton T-shirt",
+  "price": 19.99,
+  "qty_stock": 100,
+  "category": 1
+}
+####################
+GET http://localhost:8000/products/
+####################
+GET http://localhost:8000/products/4
+
+####################
+PUT http://localhost:8000/products/4/
+Content-Type: application/json
+
+{
+  "name": "Hoodie",
+  "description": "A warm and stylish hoodie",
+  "price": 29.99,
+  "qty_stock": 50,
+  "category": 2
+}
+####################
+DELETE http://localhost:8000/products/2/
+
+####################
+####################
+####################
+####################

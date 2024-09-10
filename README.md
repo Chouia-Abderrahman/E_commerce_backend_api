@@ -32,6 +32,44 @@
 - **PUT /users/{id}**: Update user profile
 - **DELETE /users/{id}**: Delete user account
 
+## Category Management
+- **POST /categories**: Add a new category
+    ````
+    {
+      "name": "Clothes"
+    }
+    ````
+- **GET /categories**: Retrieve a list of all categories, it returns a response like this
+    ````
+    [
+      {
+        "id": 1,
+        "name": "vegetables"
+      },
+      {
+        "id": 2,
+        "name": "Canned food"
+      },
+      {
+        "id": 4,
+        "name": "Clothes"
+      },
+      {
+        "id": 3,
+        "name": "Electronics"
+      }
+  ]
+    ````
+- **GET /categories/{id}/**: Retrieve details of a specific category
+
+- **PUT /categories/{id}/**: Update a specific category
+    ````
+    {
+      "name": "Updated category"
+    }
+    ````
+- **DELETE /categories/{id}/**: Delete a specific category
+
 ## Product Management
 - **POST /products**: Add a new product
 - **GET /products**: Retrieve a list of all products
@@ -39,13 +77,6 @@
 - **PUT /products/{id}**: Update details of a specific product
 - **DELETE /products/{id}**: Delete a specific product
 - **GET /products/category/{categoryId}**: Retrieve products by category
-
-## Category Management
-- **POST /categories**: Add a new category
-- **GET /categories**: Retrieve a list of all categories
-- **GET /categories/{id}**: Retrieve details of a specific category
-- **PUT /categories/{id}**: Update a specific category
-- **DELETE /categories/{id}**: Delete a specific category
 
 ## Order Management
 - **POST /orders**: Create a new order

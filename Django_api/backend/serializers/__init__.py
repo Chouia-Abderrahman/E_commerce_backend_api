@@ -1,2 +1,3 @@
 from .register_serializer import RegisterSerializer
-from .serializers import CategorySerializer, ProductSerializer
+from .product import ProductSerializer
+from .category import CategorySerializer
