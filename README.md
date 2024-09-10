@@ -72,11 +72,57 @@
 
 ## Product Management
 - **POST /products**: Add a new product
+    ````
+    {
+      "name": "T-shirt",
+      "description": "A comfortable cotton T-shirt",
+      "price": 19.99,
+      "qty_stock": 100,
+      "category": 1
+    }
+    ````
 - **GET /products**: Retrieve a list of all products
-- **GET /products/{id}**: Retrieve details of a specific product
-- **PUT /products/{id}**: Update details of a specific product
-- **DELETE /products/{id}**: Delete a specific product
-- **GET /products/category/{categoryId}**: Retrieve products by category
+  ````
+  [
+    {
+      "id": 1,
+      "name": "T-shirt",
+      "description": "A comfortable cotton T-shirt",
+      "price": 19.99,
+      "qty_stock": 100,
+      "category": {
+        "id": 1,
+        "name": "vegetables"
+      }
+    },
+    {
+      "id": 3,
+      "name": "T-shirt",
+      "description": "A comfortable cotton T-shirt",
+      "price": 19.99,
+      "qty_stock": 100,
+      "category": {
+        "id": 1,
+        "name": "vegetables"
+      }
+    },
+    {
+      "id": 4,
+      "name": "Hoodie",
+      "description": "A warm and stylish hoodie",
+      "price": 29.99,
+      "qty_stock": 50,
+      "category": {
+        "id": 2,
+        "name": "Canned food"
+      }
+    }
+  ]
+    ````
+- **GET /products/{id}/** &#x2714;: Retrieve details of a specific product
+- **PUT /products/{id}/** &#x2714;: Update details of a specific product
+- **DELETE /products/{id}/** &#x2714;: Delete a specific product
+- **GET /products/category/{categoryId}** &#x2714;: Retrieve products by category
 
 ## Order Management
 - **POST /orders**: Create a new order

@@ -7,11 +7,13 @@ from .api.category.category_edit_fetch_delete import CategoryRetrieveUpdateDestr
 from .api.category.category_list_create import CategoryListCreateView
 from .api.product.product_list_create import ProductListCreateView
 from .api.product.product_edit_fetch_delete import RetrieveUpdateDestroyAPIView
+from .api.product.product_fetch_by_category import products_by_category
 
 urlpatterns = [
 
     path('products/', ProductListCreateView.as_view(), name='product-list-create'),
     path('products/<int:id>/', RetrieveUpdateDestroyAPIView.as_view(), name='product-retrieve-update'),
+    path('products/category/<int:categoryId>/', products_by_category, name='products-by-category'),
 
     path('categories/', CategoryListCreateView.as_view(), name='category-list-create'),
     path('categories/<int:id>/', CategoryRetrieveUpdateDestroyView.as_view(), name='category-edit-fetch'),
