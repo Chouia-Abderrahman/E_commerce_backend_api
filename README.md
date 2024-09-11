@@ -124,6 +124,12 @@
 - **DELETE /products/{id}/** &#x2714;: Delete a specific product
 - **GET /products/category/{categoryId}** &#x2714;: Retrieve products by category
 
+## Payment Management
+- **POST /payments**: Process a payment
+- **GET /payments/{orderId}**: Retrieve payment details for a specific order
+- **POST /refunds**: Process a refund
+- **GET /refunds/{orderId}**: Retrieve refund details for a specific order
+
 ## Order Management
 - **POST /orders**: Create a new order
 - **GET /orders**: Retrieve a list of all orders
@@ -138,12 +144,6 @@
 - **PUT /cart/{userId}/item/{itemId}**: Update quantity of a specific item in the cart
 - **DELETE /cart/{userId}/item/{itemId}**: Remove an item from the cart
 - **DELETE /cart/{userId}**: Clear the cart for a specific user
-
-## Payment Management
-- **POST /payments**: Process a payment
-- **GET /payments/{orderId}**: Retrieve payment details for a specific order
-- **POST /refunds**: Process a refund
-- **GET /refunds/{orderId}**: Retrieve refund details for a specific order
 
 ## Review and Rating Management
 - **POST /products/{productId}/reviews**: Add a review for a product
