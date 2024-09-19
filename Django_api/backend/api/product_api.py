@@ -1,9 +1,20 @@
+
+from rest_framework import generics
+from ..models import Product
+from ..serializers.product import ProductSerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from ...models import Product
-from ...serializers import ProductSerializer
 
+
+class ProductRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    lookup_field = 'id'
+
+class ProductListCreateView(generics.ListCreateAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
 
 @api_view(['GET'])
 def products_by_category(request, categoryId):
