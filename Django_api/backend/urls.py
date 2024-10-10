@@ -13,9 +13,14 @@ from .api.profile_api import ProfileListCreateView, ProfileRetrieveUpdateDestroy
 from .api.review_api import ReviewListCreateView, ReviewRetrieveUpdateDestroyAPIView
 from .api.wishlist_api import WishlistListCreateView, WishlistRetrieveUpdateDestroyAPIView
 from .api.wishlistitem_api import WishlistItemListCreateView, WishlistItemRetrieveUpdateDestroyAPIView
+from .views import check_login
+from .api.swagger import schema_view
 
 
 urlpatterns = [
+    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
+
     path('carts/', CartListCreateView.as_view(), name='cart-list-create'),
     path('carts/<int:id>/', CartRetrieveUpdateDestroyAPIView.as_view(), name='cart-retrieve-update-delete'),
 
@@ -53,4 +58,6 @@ urlpatterns = [
     path('signup/', RegisterView.as_view(), name='signup'),
     path('login/', CustomTokenObtainPairView.as_view(), name='login'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+
+    path('check-login/', check_login, name='check_login'),
 ]
