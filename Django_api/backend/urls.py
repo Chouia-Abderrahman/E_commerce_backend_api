@@ -13,6 +13,7 @@ from .api.profile_api import ProfileListCreateView, ProfileRetrieveUpdateDestroy
 from .api.review_api import ReviewListCreateView, ReviewRetrieveUpdateDestroyAPIView
 from .api.wishlist_api import WishlistListCreateView, WishlistRetrieveUpdateDestroyAPIView
 from .api.wishlistitem_api import WishlistItemListCreateView, WishlistItemRetrieveUpdateDestroyAPIView
+from .api.authentification.current_user import CurrentUserView
 from .views import check_login
 from .api.swagger import schema_view
 
@@ -58,6 +59,8 @@ urlpatterns = [
     path('signup/', RegisterView.as_view(), name='signup'),
     path('login/', CustomTokenObtainPairView.as_view(), name='login'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+
+    path('current-user/', CurrentUserView.as_view(), name='current-user'),
 
     path('check-login/', check_login, name='check_login'),
 ]

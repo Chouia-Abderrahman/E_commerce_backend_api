@@ -100,6 +100,18 @@ GET http://localhost:8000/check-login/
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiIwNC1BNC1BRS0zMS1EMi1CMy0yMC02Ri0zRC01Ri1BOC0zQy1BMi0wRC05Ri1BRCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6ImFkbWluIiwiZXhwIjoxNzI5NTI5NDA0fQ.vZ4WFjlJYTn2t6bYLWznEEqzVq6eQ8P7UVaeQ3r3XsM
 
 ####################
+POST  http://localhost:8000/updateRequest/
+Content-Type: application/json
+
+{
+    "id": 0,
+    "propertyId": 78,
+    "buildingId": null,
+    "userId": 1,
+    "requestedChanges": "{\"PropertyNumber\":\"updated moez appartment\"}",
+    "status": 1
+}
+
 ####################
 ####################
 ####################
